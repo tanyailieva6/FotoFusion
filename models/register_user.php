@@ -23,7 +23,7 @@
 
         $password_hash = password_hash($user_password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO `users` ( `username`, `fullname`, `role`, `password`) VALUES ('$user_username','$user_fullname','$user_role','$password_hash')";
+        $sql = "INSERT INTO `users` ( `username`, `fullname`, `password`) VALUES ('$user_username','$user_fullname','$password_hash')";
         
         if($conn->query($sql)===TRUE)
         {
@@ -33,7 +33,7 @@
         {
             echo false;
         }
-        
+
     }
 
     $conn->close();
