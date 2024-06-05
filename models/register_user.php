@@ -23,17 +23,37 @@
 
         $password_hash = password_hash($user_password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO `users` ( `username`, `fullname`, `password`) VALUES ('$user_username','$user_fullname','$password_hash')";
-        
-        if($conn->query($sql)===TRUE)
+        // Check if the username already exists
+        $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
+        $stmt->bind_param("s", $user_username);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0)
         {
-            echo true;
+            echo "Username already exists";
         }
         else
         {
-            echo false;
+            $password_hash = password_hash($user_password, PASSWORD_DEFAULT);
+
+            $insert_stmt = $conn->prepare("INSERT INTO users (username, fullname, password) VALUES (?, ?, ?)");
+            $insert_stmt->bind_param("sss", $user_username, $user_fullname, $password_hash);
+
+            if ($insert_stmt->execute())
+            {
+                echo "User registered successfully";
+            }
+            else
+            {
+                echo "Error";
+                // echo "Error: " . $conn->error;
+            }
+
+            $insert_stmt->close();
         }
 
+        $stmt->close();
     }
 
     $conn->close();
