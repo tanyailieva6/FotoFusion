@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="./styles/home.css" />
+  </head>
+  <body>
+    <div class="main">
+      <h1>FotoFusion Home</h1>
+      <form id="upload-form" enctype="multipart/form-data" method="POST">
+        <input type="file" id="photo" name="photo" accept="image/*" required />
+        <div id="error-photo" class="error-message"></div>
+        <button id="upload-btn" type="submit">Upload Photo</button>
+      </form>
+      <div id="upload-status"></div>
+    </div>
+    <script src="./scripts/upload.js"></script>
+  </body>
+</html>

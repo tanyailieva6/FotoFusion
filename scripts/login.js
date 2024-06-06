@@ -4,12 +4,15 @@ const checkUsername = () => {
 
   if (username.length === 0) {
     document.getElementById("error-username").textContent =
-      "* полето е задължително";
+      "* Username is required";
+    document.getElementById("error-username").style.display = "block";
   } else if (username.length > 15) {
     document.getElementById("error-username").textContent =
-      "* невалидно потребителско име";
+      "* Invalid username";
+    document.getElementById("error-username").style.display = "block";
   } else {
     document.getElementById("error-username").textContent = "";
+    document.getElementById("error-username").style.display = "none";
     isValid = true;
   }
 
@@ -22,16 +25,19 @@ const checkPassword = () => {
 
   if (password.length === 0) {
     document.getElementById("error-password").textContent =
-      "* полето е задължително.";
+      "* Password is required.";
+    document.getElementById("error-password").style.display = "block";
   } else {
     const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,15}$)");
     isValid = regex.test(password);
 
     if (!isValid) {
       document.getElementById("error-password").textContent =
-        "* невалидна парола";
+        "* Invalid password";
+      document.getElementById("error-password").style.display = "block";
     } else {
       document.getElementById("error-password").textContent = "";
+      document.getElementById("error-password").style.display = "none";
     }
   }
 
@@ -52,6 +58,9 @@ function login(event) {
 
     fetch("./php/Session.php", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(userData),
     })
       .then((response) => response.json())
@@ -59,9 +68,10 @@ function login(event) {
         if (r["success"]) {
           document.getElementById("errorForm").textContent = "";
           window.location.href = "./home.html";
-        } else
+        } else {
           document.getElementById("errorForm").textContent =
-            "Невалидно потребителско име или парола";
+            "Invalid username or password";
+        }
       });
   }
 }
