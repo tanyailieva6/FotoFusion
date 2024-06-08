@@ -40,30 +40,30 @@ const checkUsername = () => {
   return isValid;
 };
 
-const checkPassword = () => {
-  const password = document.getElementById("password").value;
-  let isValid = false;
+// const checkPassword = () => {
+//   const password = document.getElementById("password").value;
+//   let isValid = false;
 
-  if (password.length === 0) {
-    document.getElementById("error-password").textContent =
-      "* Password is required.";
-    document.getElementById("error-password").style.display = "block";
-  } else {
-    const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,15}$)");
-    isValid = regex.test(password);
+//   if (password.length === 0) {
+//     document.getElementById("error-password").textContent =
+//       "* Password is required.";
+//     document.getElementById("error-password").style.display = "block";
+//   } else {
+//     const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,15}$)");
+//     isValid = regex.test(password);
 
-    if (!isValid) {
-      document.getElementById("error-password").textContent =
-        "* Invalid password.";
-      document.getElementById("error-password").style.display = "block";
-    } else {
-      document.getElementById("error-password").textContent = "";
-      document.getElementById("error-password").style.display = "none";
-    }
-  }
+//     if (!isValid) {
+//       document.getElementById("error-password").textContent =
+//         "* Invalid password.";
+//       document.getElementById("error-password").style.display = "block";
+//     } else {
+//       document.getElementById("error-password").textContent = "";
+//       document.getElementById("error-password").style.display = "none";
+//     }
+//   }
 
-  return isValid;
-};
+//   return isValid;
+// };
 
 const checkConfirmPassword = () => {
   const password = document.getElementById("password").value;
@@ -92,13 +92,13 @@ function register(event) {
 
   const isFullnameValid = checkFullname();
   const isUsernameValid = checkUsername();
-  const isPasswordValid = checkPassword();
+  //const isPasswordValid = checkPassword();
   const isConfirmPasswordValid = checkConfirmPassword();
 
   if (
     isFullnameValid &&
     isUsernameValid &&
-    isPasswordValid &&
+    //isPasswordValid &&
     isConfirmPasswordValid
   ) {
     const fullname = document.getElementById("fullname").value;
