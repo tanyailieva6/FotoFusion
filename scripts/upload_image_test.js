@@ -1,4 +1,4 @@
-document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
     // Get the form element
@@ -7,22 +7,23 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
     // Create a FormData object from the form element
     const formData = new FormData(form);
 
-    try {
-        // Send the form data to the server using the fetch API
-        const response = await fetch('upload.php', {
-            method: 'POST',
-            body: formData
+    // Create a query string from the formData
+    const queryParams = new URLSearchParams();
+    formData.forEach((value, key) => {
+        if (key !== 'image') { // Exclude file input from query parameters
+            queryParams.append(key, value);
+        }
+    });
+
+    // Fetch the PHP script with the form data as query parameters
+    fetch('./upload.php?' + queryParams.toString())
+        .then(response => response.text())
+        .then(result => {
+            // Display the server response
+            document.getElementById('status').innerHTML = result;
+        })
+        .catch(error => {
+            console.error('Error uploading file:', error);
+            document.getElementById('status').innerHTML = 'Error uploading file. Please try again.';
         });
-
-        // Parse the response from the server
-        const result = await response.text();
-
-        // Display the server response
-        document.getElementById('status').innerHTML = result;
-
-    } catch (error) {
-        // Handle any errors that occur during the fetch operation
-        console.error('Error uploading file:', error);
-        document.getElementById('status').innerHTML = 'Error uploading file. Please try again.';
-    }
 });
