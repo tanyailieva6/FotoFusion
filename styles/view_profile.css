@@ -3,7 +3,6 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -24,8 +23,6 @@ main {
     width: 100%;
     max-width: 1200px;
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     height: calc(100vh - 80px); /* Header height is 80px */
 }

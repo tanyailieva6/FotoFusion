@@ -4,7 +4,6 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -49,7 +48,6 @@ main {
     max-height: 100px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
     overflow: hidden;
 }
 
