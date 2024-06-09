@@ -41,6 +41,17 @@ main {
     box-sizing: border-box;
 }
 
+.gallery-form label[for="gallery-private"] {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.gallery-form input[type="checkbox"] {
+    margin-right: 10px;
+}
+
 .gallery-form button {
     width: 100%;
     padding: 10px;
