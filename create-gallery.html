@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galleries</title>
-    <link rel="stylesheet" href="./styles/galleries.css" />
-  </head>
-  <body>
+    <title>Create New Gallery</title>
+    <link rel="stylesheet" href="./styles/create-gallery.css">
+</head>
+<body>
     <header>
         <div class="left">
           <h1>FotoFusion</h1>
@@ -55,30 +55,16 @@
           </ul>
         </div>
       </header>
-    
-    <div class="sidebar">
-        <input type="text" placeholder="Search...">
-    </div>
-    <div>
-        <h1>Galleries</h1>
-    </div>
     <main>
-        
-        <div class="gallery-container">
-            <div class="gallery" id="main-gallery">
-                <div class="header">
-                    <h2>Main</h2>
-                    <button onclick="addPhoto()">Add Photo</button>
-                </div>
-                <div class="image-container">
-                    <img src="./styles/gallery.jpg" alt="Placeholder Image" id="main-image">
-                    <button class="view-button" onclick="viewGallery()">View</button>
-                </div>
-            </div>
-            <div class="gallery" id="add-gallery">
-                <button onclick="addGallery()">+</button>
-            </div>
-        </div>
+        <form class="gallery-form">
+            <label for="gallery-name">Gallery Name:</label>
+            <input type="text" id="gallery-name" name="gallery-name" required>
+
+            <label for="gallery-tags">Tags:</label>
+            <input type="text" id="gallery-tags" name="gallery-tags" placeholder="Comma separated">
+
+            <button type="submit">Create Gallery</button>
+        </form>
     </main>
     <script>
         document
@@ -92,7 +78,5 @@
             }
           });
       </script>
-  </body>
-  
-
+</body>
 </html>
