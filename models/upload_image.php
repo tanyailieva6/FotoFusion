@@ -15,23 +15,24 @@ if ($conn->connect_error)
 else
 {
     function uploadImage($conn) {
-        // $uploadDir = 'uploads/'; // org
-        $uploadDir = './uploads/'; 
+        // $uploadDir = 'uploads/'; // Directory for the uploaded images
+        $uploadDir = './uploads/'; // Directory for the uploaded images
         
         if (!is_dir($uploadDir))
         {
             mkdir($uploadDir, 0777, true);
         }
 
-        $author = $_POST['author'];
-        
+        $author = $_GET['author'];
+
+        $tempFile = $_FILES['image']['tmp_name'];
         $originalFileName = basename($_FILES['image']['name']);
         $targetFile = $uploadDir . $originalFileName;
         
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-        $check = getimagesize($_FILES['image']['tmp_name']);
+        $check = getimagesize($tempFile);
         if($check !== false)
         {
             echo "File is an image - " . $check['mime'] . ".<br>";
@@ -68,8 +69,8 @@ else
         }
         else
         {
-            // Move the uploaded file to the target dir
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile))
+            // Move the uploaded file to the target directory
+            if (move_uploaded_file($tempFile, $targetFile))
             {
                 echo "The file " . htmlspecialchars($originalFileName) . " has been uploaded.<br>";
 
@@ -83,12 +84,17 @@ else
                 
                 $stmt->bind_param("ss", $author, $targetFile);
                 
-                if ($stmt->execute()) {
+                // Execute the statement and check for errors
+                if ($stmt->execute())
+                {
                     echo "Record added successfully.<br>";
-                } else {
+                }
+                else
+                {
                     echo "Error: " . $stmt->error . "<br>";
                 }
 
+                // Close the statement
                 $stmt->close();
             }
             else
@@ -98,11 +104,12 @@ else
         }
     }
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_FILES['image']))
+    {
         uploadImage($conn);
     }
 }
 
-// Close the database connection
+
 $conn->close();
 ?>
