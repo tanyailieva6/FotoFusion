@@ -1,22 +1,12 @@
+@import url("./navbar.css");
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
     height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-header {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-}
-
-h1 {
-    margin: 0;
 }
 
 main {
@@ -133,7 +123,7 @@ main {
 }
 
 .view-gallery {
-    background-color: #4CAF50;
+    background-color: #52177e;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -144,7 +134,7 @@ main {
 }
 
 .view-gallery:hover {
-    background-color: #45a049;
+    background-color: #52177e;
 }
 
 .view-gallery {

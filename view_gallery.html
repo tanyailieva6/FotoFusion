@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galleries</title>
-    <link rel="stylesheet" href="./styles/galleries.css" />
-  </head>
-  <body>
+    <title>Gallery View</title>
+    <link rel="stylesheet" href="./styles/view_gallery.css">
+</head>
+<body>
     <header>
         <div class="left">
           <h1>FotoFusion</h1>
@@ -55,23 +55,54 @@
           </ul>
         </div>
       </header>
-    <div>
-        <h2>Galleries</h2>
+      <div class="sidebar">
+        <input type="text" placeholder="Search...">
     </div>
+    <div class="add-photo">
+        <button id="add-photo">Add Photo</button>
+    </div>
+    
     <main>
-        <div class="gallery-container">
-            <div class="gallery" id="main-gallery">
-                <div class="header">
-                    <h3>Main</h3>
-                    <button onclick="addPhoto()">Add Photo</button>
-                </div>
-                <div class="image-container">
-                    <img src="./styles/gallery.jpg" alt="Placeholder Image" id="main-image">
-                    <button class="view-button" onclick="viewGallery()">View</button>
-                </div>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="./styles/gallery.jpg" alt="Image" id="image1">
+                <button class="view-button">View</button>
             </div>
-            <div class="gallery" id="add-gallery">
-                <button onclick="addGallery()">+</button>
+            <div class="gallery-item">
+                <img src="./styles/gallery.jpg" alt="Image" id="image2">
+                <button class="view-button">View</button>
+            </div>
+            <div class="gallery-item">
+                <img src="./styles/gallery.jpg" alt="Image" id="image3">
+                <button class="view-button">View</button>
+            </div>
+            <div class="gallery-item">
+                <img src="./styles/gallery.jpg" alt="Image" id="image4">
+                <button class="view-button">View</button>
+            </div>
+            <div class="gallery-item">
+                <img src="./styles/gallery.jpg" alt="Image" id="image5">
+                <button class="view-button">View</button>
+            </div>
+            <div class="gallery-item">
+                <img src="./styles/gallery.jpg" alt="Image" id="image6">
+                <button class="view-button">View</button>
+            </div>
+            <div class="gallery-item">
+                <img src="./styles/gallery.jpg" alt="Image" id="image7">
+                <button class="view-button">View</button>
+            </div>
+            <div class="gallery-item">
+                <img src="./styles/gallery.jpg" alt="Image" id="image8">
+                <button class="view-button">View</button>
+            </div>
+            <div class="gallery-item">
+                <img src="./styles/gallery.jpg" alt="Image" id="image9">
+                <button class="view-button">View</button>
+            </div>
+            <div class="gallery-item">
+                <img src="./styles/gallery.jpg" alt="Image" id="image10">
+                <button class="view-button">View</button>
             </div>
         </div>
     </main>
@@ -87,7 +118,5 @@
             }
           });
       </script>
-  </body>
-  
-
+</body>
 </html>
